@@ -65,7 +65,9 @@ jobs:
       matrix: 
         fruits: [cat, dog]
         animals: [banana, apple]
-        
+    steps:
+      - name: apple Job
+        run: echo This is a Apple Job
         
         
           
