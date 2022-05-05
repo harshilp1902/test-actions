@@ -1,0 +1,36 @@
+
+name: CI
+
+on:
+ 
+  push:
+    branches: [ main ]
+  pull_request: 
+    branches: [ main ]
+
+  workflow_dispatch:
+
+jobs:
+
+  generate-artifacts:
+    name: Generate Artifacts
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - name: Making Directory
+        run:  mkdir artifacts
+      - name: Generate Files
+        run: |
+          cd artifacts
+          echo 'Hello This is Artifact' > artifact.txt
+          echo 'This is Artifact 2' > artifact-2.txt
+          cd ..
+          
+      - uses: actions/upload-artifact@v3
+        with:
+          name: artifact
+          path: artifacts
+
+        
+        
+          
